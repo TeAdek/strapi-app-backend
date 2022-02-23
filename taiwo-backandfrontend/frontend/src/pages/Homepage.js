@@ -11,6 +11,14 @@ query GetReviews {
         title,
         rating,
         body
+        categories {
+          data {
+            id
+            attributes {
+              name
+            }
+          }
+        }
       }
     }
   }
@@ -32,8 +40,9 @@ console.log(data)
           <div className="rating">{review.attributes.rating}</div>
           <h2>{review.attributes.title}</h2>
 
-          <small>console list</small>
-
+          {review.attributes.categories.data.map(c => (
+  <small key={c.id}>{c.attributes.name}</small>
+))}
           <p>{review.attributes.body.substring(0, 200)}...</p>
           <Link to={`/details/${review.id}`}>Read more</Link>
         </div>
