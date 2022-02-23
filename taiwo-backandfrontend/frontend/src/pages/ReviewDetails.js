@@ -11,7 +11,6 @@ query getPageById($reviewId: ID){
         body
         title,
         rating,
-        body
       }
     }
   }
